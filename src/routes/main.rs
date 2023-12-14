@@ -7,9 +7,9 @@ use crate::utils::decoder::decode;
 pub async fn server() {
     dotenv().ok();
 
-    let hi = warp::path("api")
+    let api = warp::path("api")
         .and(warp::path::param())
         .map(|params: String| format!("{}", decode(params)));
 
-    warp::serve(hi).run(([127, 0, 0, 1], 3000)).await;
+    warp::serve(api).run(([127, 0, 0, 1], 3000)).await;
 }
