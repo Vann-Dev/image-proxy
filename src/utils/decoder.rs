@@ -17,3 +17,26 @@ pub fn decode(value: String) -> String {
 
     result
 }
+
+pub fn validate(value: String) -> bool {
+    dotenv().ok();
+
+    // decode hex to base64 first
+    let hex = match hex::decode(value) {
+        Ok(val) => val,
+        Err(_) => return false,
+    };
+
+    // base64 decode to get real value
+    let mc = new_magic_crypt!(env::var("key").unwrap(), 256);
+
+    let result = match String::from_utf8(hex.clone()) {
+        Ok(val) => val,
+        Err(_) => return false,
+    };
+
+    match mc.decrypt_base64_to_string(result) {
+        Ok(_) => true,
+        Err(_) => false,
+    }
+}

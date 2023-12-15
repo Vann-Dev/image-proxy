@@ -1,15 +1,21 @@
+use crate::utils::decoder;
 use dotenv::dotenv;
 use warp::Filter;
-
-use crate::utils::decoder::decode;
+use warp::Rejection;
 
 #[tokio::main]
 pub async fn server() {
     dotenv().ok();
 
-    let api = warp::path("api")
+    let api = warp::get()
         .and(warp::path::param())
-        .map(|params: String| format!("{}", decode(params)));
+        .and_then(|params: String| async {
+            if decoder::validate(params.clone()) == true {
+                Result::<_, Rejection>::Ok(warp::reply::json(&decoder::decode(params)))
+            } else {
+                Result::<_, Rejection>::Ok(warp::reply::json(&"False"))
+            }
+        });
 
     warp::serve(api).run(([127, 0, 0, 1], 3000)).await;
 }
