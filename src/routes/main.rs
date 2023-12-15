@@ -10,7 +10,7 @@ pub async fn server() {
     let api = warp::get()
         .and(warp::path::param())
         .and_then(|params: String| async {
-            if decoder::validate(params.clone()) == true {
+            if decoder::validate(params.clone()) {
                 Result::<_, Rejection>::Ok(warp::reply::json(&decoder::decode(params)))
             } else {
                 Result::<_, Rejection>::Ok(warp::reply::json(&"False"))
