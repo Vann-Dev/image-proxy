@@ -1,21 +1,20 @@
-use crate::utils::decoder;
+use crate::handler::encrypt_route::encrypt_route;
+use crate::handler::main_route::main_route;
 use dotenv::dotenv;
 use warp::Filter;
-use warp::Rejection;
 
 #[tokio::main]
 pub async fn server() {
     dotenv().ok();
 
-    let api = warp::get()
-        .and(warp::path::param())
-        .and_then(|params: String| async {
-            if decoder::validate(params.clone()) {
-                Result::<_, Rejection>::Ok(warp::reply::json(&decoder::decode(params)))
-            } else {
-                Result::<_, Rejection>::Ok(warp::reply::json(&"False"))
-            }
-        });
+    let main_route = warp::get().and(warp::path::param()).and_then(main_route);
 
-    warp::serve(api).run(([127, 0, 0, 1], 3000)).await;
+    let encrypt_route = warp::post()
+        .and(warp::path("encrypt"))
+        .and(warp::body::json())
+        .and_then(encrypt_route);
+
+    let routes = main_route.or(encrypt_route);
+
+    warp::serve(routes).run(([127, 0, 0, 1], 3000)).await;
 }
