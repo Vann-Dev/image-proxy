@@ -3,8 +3,7 @@ FROM rust:1.74.1 as build
 RUN USER=root cargo new --bin image-proxy
 WORKDIR /image-proxy
 
-COPY ./Cargo.lock ./Cargo.lock
-COPY ./Cargo.toml ./Cargo.toml
+COPY . .
 
 RUN cargo build --release
 
