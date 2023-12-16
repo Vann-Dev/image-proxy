@@ -5,5 +5,7 @@ pub mod routes;
 pub mod utils;
 
 fn main() {
-    server()
+    server();
+
+    println!("Server Started");
 }
