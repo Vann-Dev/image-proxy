@@ -1,0 +1,11 @@
+name: Build and Push Docker Image
+on:
+  push:
+    branches: 
+      - main
+      - development
+  
+jobs:
+  build:
+    uses: VannApps/workflows/.github/workflows/build-and-push-docker-image.yml@main
+    secrets: inherit
