@@ -1,6 +1,5 @@
 FROM rust:1.74.1 as build
 
-RUN USER=root cargo new --bin image-proxy
 WORKDIR /image-proxy
 
 COPY . .
