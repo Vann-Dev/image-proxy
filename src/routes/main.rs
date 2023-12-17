@@ -16,5 +16,5 @@ pub async fn server() {
 
     let routes = main_route.or(encrypt_route);
 
-    warp::serve(routes).run(([127, 0, 0, 1], 3000)).await;
+    warp::serve(routes).run(([0, 0, 0, 0], 3000)).await;
 }
