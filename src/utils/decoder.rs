@@ -8,7 +8,7 @@ pub fn decode(value: String) -> String {
 
     let hex = hex::decode(value).unwrap();
 
-    let mc = new_magic_crypt!(env::var("key").unwrap(), 256);
+    let mc = new_magic_crypt!(env::var("key").unwrap(), 256, env::var("iv").unwrap());
     let result = mc
         .decrypt_base64_to_string(String::from_utf8(hex.clone()).unwrap())
         .expect("Invalid base64");
@@ -24,7 +24,7 @@ pub fn validate(value: String) -> bool {
         Err(_) => return false,
     };
 
-    let mc = new_magic_crypt!(env::var("key").unwrap(), 256);
+    let mc = new_magic_crypt!(env::var("key").unwrap(), 256, env::var("iv").unwrap());
 
     let result = match String::from_utf8(hex.clone()) {
         Ok(val) => val,
