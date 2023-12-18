@@ -3,6 +3,8 @@ use hex;
 use magic_crypt::{new_magic_crypt, MagicCryptTrait};
 use std::env;
 
+use super::logger::{self, log};
+
 pub fn decode(value: String) -> String {
     dotenv().ok();
 
@@ -12,6 +14,11 @@ pub fn decode(value: String) -> String {
     let result = mc
         .decrypt_base64_to_string(String::from_utf8(hex.clone()).unwrap())
         .expect("Invalid base64");
+
+    log(
+        logger::Mode::Info,
+        "Success decoded URL: ".to_string() + &result,
+    );
 
     result
 }
