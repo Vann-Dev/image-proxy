@@ -1,8 +1,8 @@
-![banner](https://image-proxy.vannapps.com/594648694b4c34633737437966616e453063366874756c6e7858397a47676a536967305666322b314e34594848776175566569466c49345946433759336335576b414d526f6839546c61616230735671546974612f413d3d)
+![banner](https://image-proxy.vannapps.com/537671423169614552553465736634633877496759545053396571706c544b61794a4644726338337a6630746c574b4d6a35522b7361665476436338615742595a7a654c2f656270467643636e674d6b2f386f6464413d3d)
 
 # Rust Image Proxy
 
-What is this?, this is repository used for encrypting or hiding real source for image, for example in banner here, the real source is from `https://content.vannapps.com/public/banner-image-proxy.png` then using this repository we can encrypt it to hex with secret key 🤫, then we can use it like this `https://image-proxy.vannapps.com/594648694b4c34633737437966616e453063366874756c6e7858397a47676a536967305666322b314e34594848776175566569466c49345946433759336335576b414d526f6839546c61616230735671546974612f413d3d`.
+What is this?, this is repository used for encrypting or hiding real source for image, for example in banner here, the real source is from `https://content.vannapps.com/public/banner-image-proxy.png` then using this repository we can encrypt it to hex with secret key 🤫, then we can use it like this `https://image-proxy.vannapps.com/537671423169614552553465736634633877496759545053396571706c544b61794a4644726338337a6630746c574b4d6a35522b7361665476436338615742595a7a654c2f656270467643636e674d6b2f386f6464413d3d`.
 
 ## Features
  - Hide real source URL using aes-256-cbc
