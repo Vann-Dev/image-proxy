@@ -13,7 +13,7 @@ tokio = { version = "1", features = ["full"] }
 warp = "0.3.6"
 reqwest = { version = "0.12", features = ["json"] }
 openssl = { version = "0.10", features = ["vendored"] }
-image = "0.25.0"
+image = "0.25.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.115"
 colored = "2.1.0"
