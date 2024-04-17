@@ -26,7 +26,7 @@ FROM alpine:latest
 
 RUN addgroup -g 1000 myapp
 
-RUN adduser -D -s /bin/sh -u 1000 -G image-proxy myapp
+RUN adduser -D -s /bin/sh -u 1000 -G myapp myapp
 
 WORKDIR /home/image-proxy/bin/
 
