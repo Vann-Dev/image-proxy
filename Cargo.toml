@@ -9,7 +9,7 @@ edition = "2021"
 dotenv = "0.15.0"
 hex = "0.4.3"
 magic-crypt = "3.1.13"
-tokio = { version = "1", features = ["full"] }
+tokio = { version = "1.37.0", features = ["full"] }
 warp = "0.3.7"
 reqwest = { version = "0.12", features = ["json"] }
 openssl = { version = "0.10", features = ["vendored"] }
