@@ -22,7 +22,7 @@ COPY . .
 
 RUN RUSTFLAGS=-Clinker=musl-gcc cargo build --release --target=x86_64-unknown-linux-musl
 
-FROM alpine:3.19.1
+FROM alpine:3.20.0
 
 RUN addgroup -g 1000 myapp
 
